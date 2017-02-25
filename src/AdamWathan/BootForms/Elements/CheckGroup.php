@@ -22,7 +22,7 @@ class CheckGroup extends FormGroup
         $html .= $this->renderAttributes();
         $html .= '>';
         $html .= $this->label;
-        $html .= $this->renderHelpBlock();
+        $html .= $this->renderFormControlFeedback();
 
         $html .= '</div>';
 

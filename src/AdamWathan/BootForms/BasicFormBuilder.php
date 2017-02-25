@@ -3,7 +3,7 @@
 use AdamWathan\BootForms\Elements\CheckGroup;
 use AdamWathan\BootForms\Elements\FormGroup;
 use AdamWathan\BootForms\Elements\GroupWrapper;
-use AdamWathan\BootForms\Elements\HelpBlock;
+use AdamWathan\BootForms\Elements\FormControlFeedback;
 use AdamWathan\BootForms\Elements\InputGroup;
 use AdamWathan\Form\FormBuilder;
 
@@ -18,14 +18,15 @@ class BasicFormBuilder
 
     protected function formGroup($label, $name, $control)
     {
-        $label = $this->builder->label($label)->addClass('control-label')->forId($name);
+        $label = $this->builder->label($label)->addClass('form-control-label')->forId($name);
         $control->id($name)->addClass('form-control');
 
         $formGroup = new FormGroup($label, $control);
 
         if ($this->builder->hasError($name)) {
-            $formGroup->helpBlock($this->builder->getError($name));
-            $formGroup->addClass('has-error');
+            $control->addClass('form-control-danger');
+            $formGroup->formControlFeedback($this->builder->getError($name));
+            $formGroup->addClass('has-danger');
         }
 
         return $this->wrap($formGroup);
@@ -87,13 +88,13 @@ class BasicFormBuilder
 
     protected function buildCheckGroup($label, $name, $control)
     {
-        $label = $this->builder->label($label, $name)->after($control)->addClass('control-label');
+        $label = $this->builder->label($label, $name)->after($control)->addClass('form-control-label');
 
         $checkGroup = new CheckGroup($label);
 
         if ($this->builder->hasError($name)) {
-            $checkGroup->helpBlock($this->builder->getError($name));
-            $checkGroup->addClass('has-error');
+            $checkGroup->formControlFeedback($this->builder->getError($name));
+            $checkGroup->addClass('has-danger');
         }
         return $checkGroup;
     }
@@ -151,14 +152,14 @@ class BasicFormBuilder
     public function file($label, $name, $value = null)
     {
         $control = $this->builder->file($name)->value($value);
-        $label = $this->builder->label($label, $name)->addClass('control-label')->forId($name);
+        $label = $this->builder->label($label, $name)->addClass('form-control-label')->forId($name);
         $control->id($name);
 
         $formGroup = new FormGroup($label, $control);
 
         if ($this->builder->hasError($name)) {
-            $formGroup->helpBlock($this->builder->getError($name));
-            $formGroup->addClass('has-error');
+            $formGroup->formControlFeedback($this->builder->getError($name));
+            $formGroup->addClass('has-danger');
         }
 
         return $this->wrap($formGroup);

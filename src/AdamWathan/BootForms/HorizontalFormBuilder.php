@@ -1,7 +1,7 @@
 <?php namespace AdamWathan\BootForms;
 
 use AdamWathan\BootForms\Elements\CheckGroup;
-use AdamWathan\BootForms\Elements\HelpBlock;
+use AdamWathan\BootForms\Elements\FormControlFeedback;
 use AdamWathan\BootForms\Elements\HorizontalFormGroup;
 use AdamWathan\BootForms\Elements\OffsetFormGroup;
 use AdamWathan\Form\FormBuilder;
@@ -41,7 +41,7 @@ class HorizontalFormBuilder extends BasicFormBuilder
         $formGroup = new HorizontalFormGroup($label, $control, $this->getControlSizes());
 
         if ($this->builder->hasError($name)) {
-            $formGroup->helpBlock($this->builder->getError($name));
+            $formGroup->formControlFeedback($this->builder->getError($name));
             $formGroup->addClass('has-error');
         }
 
@@ -93,7 +93,7 @@ class HorizontalFormBuilder extends BasicFormBuilder
         $checkGroup = new CheckGroup($label);
 
         if ($this->builder->hasError($name)) {
-            $checkGroup->helpBlock($this->builder->getError($name));
+            $checkGroup->formControlFeedback($this->builder->getError($name));
             $checkGroup->addClass('has-error');
         }
 
@@ -125,7 +125,7 @@ class HorizontalFormBuilder extends BasicFormBuilder
         $formGroup = new HorizontalFormGroup($label, $control, $this->getControlSizes());
 
         if ($this->builder->hasError($name)) {
-            $formGroup->helpBlock($this->builder->getError($name));
+            $formGroup->formControlFeedback($this->builder->getError($name));
             $formGroup->addClass('has-error');
         }
 

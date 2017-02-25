@@ -7,7 +7,7 @@ class FormGroup extends Element
 {
     protected $label;
     protected $control;
-    protected $helpBlock;
+    protected $formControlFeedback;
 
     public function __construct(Label $label, Element $control)
     {
@@ -23,26 +23,26 @@ class FormGroup extends Element
         $html .= '>';
         $html .= $this->label;
         $html .= $this->control;
-        $html .= $this->renderHelpBlock();
+        $html .= $this->renderFormControlFeedback();
 
         $html .= '</div>';
 
         return $html;
     }
 
-    public function helpBlock($text)
+    public function formControlFeedback($text)
     {
-        if (isset($this->helpBlock)) {
+        if (isset($this->formControlFeedback)) {
             return;
         }
-        $this->helpBlock = new HelpBlock($text);
+        $this->formControlFeedback = new FormControlFeedback($text);
         return $this;
     }
 
-    protected function renderHelpBlock()
+    protected function renderFormControlFeedback()
     {
-        if ($this->helpBlock) {
-            return $this->helpBlock->render();
+        if ($this->formControlFeedback) {
+            return $this->formControlFeedback->render();
         }
 
         return '';

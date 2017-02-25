@@ -2,23 +2,23 @@
 
 use AdamWathan\Form\Elements\Element;
 
-class HelpBlock extends Element
+class FormControlFeedback extends Element
 {
     private $message;
 
     public function __construct($message)
     {
         $this->message = $message;
-        $this->addClass('help-block');
+        $this->addClass('form-control-feedback');
     }
 
     public function render()
     {
-        $html = '<p';
+        $html = '<div';
         $html .= $this->renderAttributes();
         $html .= '>';
         $html .= $this->message;
-        $html .= '</p>';
+        $html .= '</div>';
 
         return $html;
     }

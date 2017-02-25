@@ -18,9 +18,9 @@ class GroupWrapper
         return $this->formGroup->render();
     }
 
-    public function helpBlock($text)
+    public function formControlFeedback($text)
     {
-        $this->formGroup->helpBlock($text);
+        $this->formGroup->formControlFeedback($text);
         return $this;
     }
 

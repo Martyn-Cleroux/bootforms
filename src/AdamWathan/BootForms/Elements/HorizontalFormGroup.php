@@ -21,7 +21,7 @@ class HorizontalFormGroup extends FormGroup
         $html .= $this->label;
         $html .= '<div class="' . $this->getControlClass() . '">';
         $html .= $this->control;
-        $html .= $this->renderHelpBlock();
+        $html .= $this->renderFormControlFeedback();
         $html .= '</div>';
 
         $html .= '</div>';
